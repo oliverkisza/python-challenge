@@ -1,0 +1,5 @@
+369711 total votes Candidate
+Diana DeGette              272892
+Charles Casper Stockham     85213
+Raymon Anthony Doane        11606
+Name: count, dtype: int64 None None None None
