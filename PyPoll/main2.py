@@ -1,12 +1,48 @@
 import csv
-import pandas as pd
 from pathlib import Path
 
 #set path to var
-csvfile = Path('PyPoll/Resources/election_data.csv')
+csvpath = Path('python-challenge/PyPoll/Resources/election_data.csv')
 
 #import CSV
-electionData = pd.read_csv(csvfile)
+with open(csvpath, newline = '') as csvfile:
+    reader = csv.reader(csvfile)
+    next(reader)
+
+#create empty lists for each part
+    ballot_id = []
+    counties = []
+    candidates = []
+
+    #create separate lists for each column (candidate, county, ballot ID)
+    for row in reader:
+        ballot_id.append(float(row[0])) #convert ballotID to float in case needed
+        counties.append(row[1])
+        candidates.append([2])
+
+#Find total number of votes each candidate won
+
+#Find % of vote each candidate won
+
+#Find winner of the election based on popular vote
+
+#print to terminal
+    print('Election Results')
+    print('---------------------')
+    #Total number of votes cast
+    print('Total Votes:', len(ballot_id))
+    print('---------------------')
+    print(candidate, ':', )
+
+    print('Average change is ' + str(round(avgchg, 2)))
+    print('Greatest Increase in Profits: ' + str(maxdate) + ': ', str(round(max(change))))
+    print('Greatest Decrease in Profits: ' + str(mindate) + ': ', str(round(min(change))))
+
+#output to analysis2.txt file
+with open("Anaylsis2.txt", "w") as output:
+    print(('Election Results'), file=output)
+
+####################################################################################################
 
 #Find total number of votes cast
 totalVotes = sum(electionData.value_counts())
@@ -31,7 +67,6 @@ candidate2percent = ((candidateVoteSums[2]/totalVotes)*100).round(3)
 print(votedCandidateList[2] + ': ' + str(candidate2percent) + '%')
 
 #The winner of the election based on popular vote
-#this is an extremely obtuse way of doing this but since i didnt use a loop above (i forgot they existed) this is my way of not rewriting everything
 candidateList = [candidate0percent, candidate1percent, candidate2percent]
 winnerNum = max(candidateList)
 if winnerNum == candidate0percent:
